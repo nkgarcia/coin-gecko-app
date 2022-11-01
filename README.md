@@ -1,4 +1,4 @@
-# You.com Data Visualization App Takehome Challenge
+# Data Visualization App Using Flask
 
 run_flask_app.py - contains the actual python code that will start the development server.
 __init__.py - initializes your application creating a Flask app instance.
