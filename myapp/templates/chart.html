@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Trending Crypto Currencies</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.3.2/chart.min.js"></script>
+</head>
+<body>
+<p>Select a crypto currency from the list.</p>
+<form id="dropdown_form" action="/" method="POST" enctype="multipart/form-data">
+    <select name="crypto_dropdown" method="GET" action="/">
+        <option value="" disabled selected>Select your option</option>
+        {% for coin_id in coin_ids %}
+        <option value="{{coin_id}}">{{coin_id}}</option>
+        {% endfor %}
+    </select>
+    <input type="submit" value="Submit">
+
+</form>
+<canvas id="lineChart" width="1600" height="900"></canvas>
+<script>
+    var ctx = document.getElementById("lineChart").getContext("2d");
+    var lineChart = new Chart(ctx, {
+        type: "line",
+        data: {
+                labels: {{dates | safe}},
+                datasets: [{
+                    label: "Price Time Series (USD)",
+                    data: {{prices | safe}},
+                    fill: false,
+                    borderColor: "rgb(75, 192, 192)",
+                    lineTension: 0.1
+                }]
+            },
+        options: {responsive: false}
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,1 @@
+# Web app for coingecko prices
